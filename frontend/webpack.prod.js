@@ -8,7 +8,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
-	entry: path.resolve(__dirname, 'src', 'index.js'),
+	entry: path.resolve(__dirname, 'src', 'index.ts'),
 	mode: 'production',
 	output: {
 		path: path.resolve(__dirname, 'build'),
@@ -21,6 +21,9 @@ module.exports = {
 			include: /\.min\.js$/
 		})]
 	},
+	resolve: {
+		extensions: ['.ts', '.tsx', '.js', '.jsx']
+	},
 	module: {
 		rules: [
 			{
@@ -28,6 +31,13 @@ module.exports = {
 				exclude: /node_modules/,
 				use: {
 					loader: 'babel-loader'
+				}
+			},
+			{
+				test: /\.(ts|tsx)$/,
+				exclude: /node_modules/,
+				use: {
+					loader: 'ts-loader'
 				}
 			},
 			{

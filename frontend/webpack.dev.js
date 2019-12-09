@@ -17,19 +17,23 @@ module.exports = {
 		filename: 'main.js',
 		publicPath: '/'
 	},
+	resolve: {
+		extensions: ['.ts', '.tsx', '.js', '.jsx']
+	},
+	target: 'web',
 	module: {
 		rules: [
 			{
 				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
-				use: {
-					loader: 'babel-loader'
-				}
+				use: ['eslint-loader', 'babel-loader']
 			},
 			{
-				test: /\.(js|jsx)$/,
+				test: /\.(ts|tsx)$/,
 				exclude: /node_modules/,
-				use: ['eslint-loader', 'babel-loader']
+				use: {
+					loader: 'babel-loader',
+				},
 			},
 			{
 				test: /\.html$/,
