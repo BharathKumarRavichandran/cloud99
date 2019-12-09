@@ -1,4 +1,4 @@
-# Cloud99
+# cloud99
 
 ### Project Structure
 * Directory [backend](backend) contains the backend server code written in Golang.

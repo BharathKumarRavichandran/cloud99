@@ -1,4 +1,4 @@
-# Frontend for Cloud99
+# Frontend for cloud99
 
 ### Prerequirements
 * Install [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
