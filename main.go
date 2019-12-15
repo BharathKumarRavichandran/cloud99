@@ -17,7 +17,7 @@ func initDB(config *utils.Config) {
 	if err := db.Open(config); err != nil {
 		panic("Could not connect to database")
 	}
-	defer db.Close()
+	//defer db.Close()
 }
 
 func RealMain() {

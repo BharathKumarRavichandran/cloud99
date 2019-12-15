@@ -95,6 +95,8 @@ func (ctrl UserController) RegisterUser(c *gin.Context) {
 			"status_code": http.StatusNotAcceptable,
 			"message":     "Could not register user",
 		})
+		c.Abort()
+		return
 	}
 
 	// Save session for registered user
@@ -111,7 +113,7 @@ func (ctrl UserController) RegisterUser(c *gin.Context) {
 	session.Set("user", logged_user)
 	session.Save()
 
-	utils.Logger.Infof("UserID %d : Successfully logged out", user.UserID)
+	utils.Logger.Infof("UserID %d : Successfully registered user", user.UserID)
 	c.JSON(http.StatusOK, gin.H{
 		"status_code": http.StatusOK,
 		"message":     "Successfully registered user",
