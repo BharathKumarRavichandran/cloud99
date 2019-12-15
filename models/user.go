@@ -2,6 +2,7 @@ package models
 
 import (
 	"errors"
+	"time"
 
 	"github.com/BharathKumarRavichandran/cloud99/db"
 	"github.com/BharathKumarRavichandran/cloud99/utils"
@@ -13,10 +14,13 @@ import (
 
 // Inject fields `ID`, `CreatedAt`, `UpdatedAt`, `DeletedAt` into model `User`
 type User struct {
-	UserID   uint   `gorm:"index:user_id;PRIMARY_KEY"`
-	Name     string `gorm:"type:varchar(100);NOT NULL"`
-	Email    string `gorm:"type:varchar(100);UNIQUE_INDEX"`
-	Password string `gorm:"type:varchar(100);NOT NULL"`
+	UserID    uint   `gorm:"index:user_id;PRIMARY_KEY"`
+	Name      string `gorm:"type:varchar(100);NOT NULL"`
+	Email     string `gorm:"type:varchar(100);UNIQUE"`
+	Password  string `gorm:"type:varchar(100);NOT NULL"`
+	CreatedAt time.Time
+	UpdatedAt time.Time
+	DeletedAt *time.Time `sql:"index"`
 }
 
 type UserModel struct{}

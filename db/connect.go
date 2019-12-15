@@ -38,10 +38,11 @@ func Open(config *utils.Config) error {
 	// Globally setting DB as database connection
 	DB = conn
 
-	fmt.Println("Database connection successful on :" + string(config.DB_PORT))
+	utils.Logger.Infof("Database connection successful on : %s", string(config.DB_PORT))
 	return err
 }
 
 func Close() error {
+	utils.Logger.Error("Database connection closed")
 	return DB.Close()
 }
